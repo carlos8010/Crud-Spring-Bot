@@ -1,5 +1,13 @@
 # KometPrueba
 
+Esta API ofrece servicios para administrar una lista de flores. Cada flor tiene los siguientes atributos:
+
+- id: identificador único de la flor.
+- name: nombre de la flor.
+- price: precio de la flor.
+
+La lista de flores se almacena en una variable estática en el servidor.
+
 ## Endpoints
 
 ### Agregar una lista de flores
