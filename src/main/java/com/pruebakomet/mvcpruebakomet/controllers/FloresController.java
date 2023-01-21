@@ -13,11 +13,19 @@ import java.util.stream.Collectors;
 public class FloresController {
     private static List<Flor> ArrayFlores;
 
+    /**
+     *  Esta api recibe el array de flores
+     * @param NuevasFlores
+     */
     @PostMapping("/flores")
     public void addFlores(@RequestBody List<Flor> NuevasFlores) {
         ArrayFlores = NuevasFlores;
     }
 
+    /**
+     *  Esta api es para trer todas las flores concantenando la palabra -komet sales y ordenandolo de manera descendente por su nombre, trae solo el nombre y su precio
+     * @return
+     */
     @GetMapping("/flores")
     public List<FlorNP> getFlores() {
         return ArrayFlores.stream()
@@ -26,6 +34,10 @@ public class FloresController {
         .collect(Collectors.toList());
     }
 
+    /**
+     *  Esta funcion es para traer las flores que tengan un precio mayor a 20
+     * @return
+     */
     @GetMapping("/flores/price")
     public List<Flor> getFloresPrice() {
         return ArrayFlores.stream()
@@ -34,11 +46,20 @@ public class FloresController {
     }
 
 
+    /**
+     *  Esta api es para borrar una flor de la lista flores mediante el id
+     * @param id
+     */
     @DeleteMapping("/flores/{id}")
     public void deleteFlores(@PathVariable String id) {
         ArrayFlores.removeIf(flower -> flower.getId().equals(id));
     }
 
+    /**
+     *  Esta api es para traer una lista de flores por el atributo name
+     * @param name
+     * @return
+     */
     @GetMapping("/flores/name/{name}")
     public List<Flor> getFloresByName(@PathVariable String name) {
         return ArrayFlores.stream()
