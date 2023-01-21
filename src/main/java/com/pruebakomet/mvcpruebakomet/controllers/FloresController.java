@@ -1,8 +1,8 @@
 package com.pruebakomet.mvcpruebakomet.controllers;
 
-
 import com.pruebakomet.mvcpruebakomet.models.Flor;
 import com.pruebakomet.mvcpruebakomet.models.FlorNP;
+import com.pruebakomet.mvcpruebakomet.models.Response;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Comparator;
@@ -10,16 +10,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+//@RequestMapping("/api")
 public class FloresController {
     private static List<Flor> ArrayFlores;
 
     /**
-     *  Esta api recibe el array de flores
+     * Esta api recibe el array de flores
+     *
      * @param NuevasFlores
      */
     @PostMapping("/flores")
-    public void addFlores(@RequestBody List<Flor> NuevasFlores) {
+    public String addFlores(@RequestBody List<Flor> NuevasFlores) {
         ArrayFlores = NuevasFlores;
+
+        Response MensajeRespuesta = new Response("Agregado con exito",200);
+
+        return MensajeRespuesta.toString();
+
     }
 
     /**
@@ -51,8 +58,13 @@ public class FloresController {
      * @param id
      */
     @DeleteMapping("/flores/{id}")
-    public void deleteFlores(@PathVariable String id) {
+    public String deleteFlores(@PathVariable String id) {
         ArrayFlores.removeIf(flower -> flower.getId().equals(id));
+
+        Response MensajeRespuesta = new Response("Eliminado con exito",200);
+
+        return MensajeRespuesta.toString();
+
     }
 
     /**
