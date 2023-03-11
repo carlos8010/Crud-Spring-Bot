@@ -1,4 +1,4 @@
-# KometPrueba
+# Crud-Spring-Bot
 
 Esta API ofrece servicios para administrar una lista de flores. Cada flor tiene los siguientes atributos:
 
